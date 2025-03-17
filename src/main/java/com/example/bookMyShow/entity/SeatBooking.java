@@ -7,8 +7,8 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class SeatBooking {
 
     @Id
-    private String id; // pk
-    private String seatId; // fk - seatTable
+    private String id;
+    private String seatId;
     private String bookingId;
 
     public void setId(String id) {

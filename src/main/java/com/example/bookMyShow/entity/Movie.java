@@ -1,78 +1,60 @@
 package com.example.bookMyShow.entity;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.annotations.Document;
+//import org.springframework.data.mongodb.core.mapping.Document;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-@Document(collection = "Movie")
-public class Movie {
+@Data
+@NoArgsConstructor
+@org.springframework.data.mongodb.core.mapping.Document(collection = "movie")
+@Document(indexName = "movies")
+public class Movie implements IPersistent {
 
     @Id
     private String id;
     private String duration;
-    private String name;
+
+    @Field(type = FieldType.Text, analyzer = "standard")
+    private String title;
+
+    @Field(type = FieldType.Text, analyzer = "standard")
     private String description;
+
     private GenreType genreType;
     private String directorName;
 
+    private double averageRating;
+    private int reviewCount;
 
-    public Movie(String name, String duration, String description, GenreType genreType, String directorName) {
+
+    public Movie(String title, String duration, String description, String directorName) {
         this.duration = duration;
-        this.name = name;
+        this.title = title;
         this.description = description;
-        this.genreType = genreType;
         this.directorName = directorName;
     }
 
-    public String getId() {
-        return id;
+    @Override
+    public String toString() {
+        return "Movie{duration=" + duration + ", title='" + title + "', genreType='" + genreType + "', directorName='" + directorName + "'}";
     }
 
-    public String getDuration() {
-        return duration;
+
+    @Override
+    public void setId(String Id) {
+
     }
 
-    public void setDuration(String duration) {
-        this.duration = duration;
+    public String getId(String Id){
+        return Id;
     }
 
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public GenreType getGenreType() {
-        return genreType;
-    }
-
-    public void setGenreType(GenreType genreType) {
-        this.genreType = genreType;
-    }
-
-    public String getDirectorName() {
-        return directorName;
-    }
-
-    public void setDirectorName(String directorName) {
-        this.directorName = directorName;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String toString(){
-        return "Movie{duration="+duration+", name='"+name+"', genreType='"+genreType+"', directorName='"+directorName+"'}";
+    public void decrementReviewCount() {
+        this.reviewCount--;
     }
 }
 

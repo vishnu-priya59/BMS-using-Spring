@@ -41,6 +41,6 @@ public class Theatre {
     }
 
     public String toString(){
-        return "Theatre{name='"+name+ "', address:"+address+"}";
+        return "Theatre{title='"+name+ "', address:"+address+"}";
     }
 }

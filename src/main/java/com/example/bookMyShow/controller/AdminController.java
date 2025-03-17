@@ -40,8 +40,5 @@ public class AdminController {
         return adminService.createSeat(seatRequest.getScreenId(), seatRequest.getCategoryId());
     }
 
-    @PostMapping("/createMovie")
-    public Movie createMovie(@RequestBody MovieRequest movieRequest) {
-        return adminService.createMovie(movieRequest.getDuration(), movieRequest.getMovieName(), movieRequest.getDescription(), movieRequest.getGenreType(), movieRequest.getDirectorName());
-    }
+
 }

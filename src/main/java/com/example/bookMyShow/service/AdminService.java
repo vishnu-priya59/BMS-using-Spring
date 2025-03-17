@@ -46,7 +46,7 @@ public class AdminService {
         return seatService.createSeat(screenId, categoryId);
     }
 
-    public Movie createMovie(String name, String duration, String description, GenreType genreType, String directorName){
+   public Movie createMovie(String name, String duration, String description, GenreType genreType, String directorName){
         return movieService.createMovie(duration, name, description,genreType, directorName);
     }
 

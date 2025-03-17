@@ -6,6 +6,7 @@ import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -16,8 +17,8 @@ public class MovieRepo {
         this.mongoTemplate = mongoTemplate;
     }
 
-    public Movie saveMovie(Movie movie) {
-        return mongoTemplate.insert(movie);
+    public Movie save(Movie movie) {
+        return mongoTemplate.save(movie);
     }
 
     public Optional<Movie> findById(String movieId) {
@@ -36,5 +37,9 @@ public class MovieRepo {
         Query query = new Query();
         query.addCriteria(Criteria.where("id").is(movieId));
         mongoTemplate.remove(query, Movie.class);
+    }
+
+    public List<Movie> findAll() {
+        return mongoTemplate.findAll(Movie.class);
     }
 }

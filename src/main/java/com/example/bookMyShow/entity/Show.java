@@ -7,9 +7,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Show {
 
     @Id
-    private String id; // pk
-    private String movieId; // fk - movieTable
-    private String screenId; // fk - screenTable
+    private String id;
+    private String movieId;
+    private String screenId;
     private String startTime;
 
     public Show(String movieId, String screenId, String startTime) {

@@ -7,7 +7,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class SeatCategory {
 
     @Id
-    private String id; //pk
+    private String id;
     private int price;
 
     public String getId() {

@@ -8,10 +8,12 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Screen {
 
     @Id
-    private String id;
+    private String Id;
     @Setter
     private String theatreId;
+    @Setter
     private String screenName;
+    @Setter
     private int totalSeats;
 
     public Screen(String theatreId, String screenName, int totalSeats) {
@@ -28,25 +30,17 @@ public class Screen {
         this.screenName = name;
     }
 
-    public void setTotalSeats(int totalSeats) {
-        this.totalSeats = totalSeats;
+    public void setId(String id) {
+        this.Id = id;
     }
 
-    public String getTheatreId() {
-        return theatreId;
-    }
 
     public String getId() {
-        return id;
-    }
+        return Id;
 
-    public void setId(String id) {
-        this.id = id;
     }
 
     public int getTotalSeats() {
         return totalSeats;
     }
-
-
 }
